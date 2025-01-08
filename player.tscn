@@ -1,0 +1,169 @@
+[gd_scene load_steps=19 format=3 uid="uid://ccd72ci1oax7r"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_o2ceu"]
+[ext_resource type="Texture2D" uid="uid://bjgsnqwq4uvm7" path="res://tile_sheet1.png" id="2_cv8gt"]
+[ext_resource type="PackedScene" uid="uid://denrq8xkq60te" path="res://gun.tscn" id="3_nv476"]
+[ext_resource type="AudioStream" uid="uid://5dtg6p5fd7q6" path="res://Minecraft Walking - Sound Effect  ProSounds.mp3" id="4_offb1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_33q8s"]
+atlas = ExtResource("2_cv8gt")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mdcjl"]
+atlas = ExtResource("2_cv8gt")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xxd3p"]
+atlas = ExtResource("2_cv8gt")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ndusf"]
+atlas = ExtResource("2_cv8gt")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2i5jv"]
+atlas = ExtResource("2_cv8gt")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xg8qc"]
+atlas = ExtResource("2_cv8gt")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_smurc"]
+atlas = ExtResource("2_cv8gt")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6pdjw"]
+atlas = ExtResource("2_cv8gt")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3muxt"]
+atlas = ExtResource("2_cv8gt")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5xiu5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_33q8s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mdcjl")
+}],
+"loop": true,
+"name": &"down_walk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xxd3p")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ndusf")
+}],
+"loop": true,
+"name": &"side_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2i5jv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xg8qc")
+}],
+"loop": true,
+"name": &"side_walk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_smurc")
+}],
+"loop": true,
+"name": &"top_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6pdjw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3muxt")
+}],
+"loop": true,
+"name": &"top_walk",
+"speed": 5.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_osqjv"]
+offsets = PackedFloat32Array(0, 0.467532, 0.844156)
+colors = PackedColorArray(1, 1, 1, 1, 0.069307, 0.069307, 0.069307, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_w3lp4"]
+gradient = SubResource("Gradient_osqjv")
+fill = 1
+fill_from = Vector2(0.46789, 0.477064)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fokky"]
+radius = 6.25154
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_63q17"]
+radius = 7.08878
+
+[node name="player" type="CharacterBody2D" groups=["player"]]
+position = Vector2(7, 1)
+scale = Vector2(7.2, 7.2)
+script = ExtResource("1_o2ceu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5xiu5")
+animation = &"down_walk"
+frame = 1
+frame_progress = 0.187815
+
+[node name="gun" parent="." instance=ExtResource("3_nv476")]
+position = Vector2(-5.27778, 0.972222)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0.138889, 5)
+scale = Vector2(2.96172, 3.03828)
+texture = SubResource("GradientTexture2D_w3lp4")
+
+[node name="player" type="CollisionShape2D" parent="."]
+position = Vector2(-1.11111, -0.138889)
+shape = SubResource("CircleShape2D_fokky")
+
+[node name="healthbar" type="ProgressBar" parent="."]
+modulate = Color(1, 1, 0, 1)
+offset_left = -10.5556
+offset_top = 7.91667
+offset_right = 183.444
+offset_bottom = 37.9167
+scale = Vector2(0.1, 0.1)
+show_percentage = false
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(-0.694444, 0)
+shape = SubResource("CircleShape2D_63q17")
+
+[node name="attack cooldown" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="walking_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_offb1")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2(0.1, 0.1)
+
+[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_exited" from="hitbox" to="." method="_on_hitbox_body_exited"]
+[connection signal="timeout" from="attack cooldown" to="." method="_on_attack_cooldown_timeout"]

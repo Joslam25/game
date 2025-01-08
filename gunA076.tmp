@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://denrq8xkq60te"]
+
+[ext_resource type="Script" path="res://gun.gd" id="1_ml53v"]
+[ext_resource type="Texture2D" uid="uid://ba3lfvdep23uh" path="res://Zombie Apocalypse Tileset/Organized separated sprites/Pickable Items and Weapons/Zombie-Tileset---_0334_Capa-335.png" id="2_w8qb0"]
+[ext_resource type="AudioStream" uid="uid://slv4lowxemnm" path="res://713312__ron88888__pew-sound (1).mp3" id="3_ogc2q"]
+
+[node name="gun" type="Node2D"]
+script = ExtResource("1_ml53v")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2, 0)
+texture = ExtResource("2_w8qb0")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="pew" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_ogc2q")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

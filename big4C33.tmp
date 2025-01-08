@@ -1,0 +1,79 @@
+[gd_scene load_steps=10 format=3 uid="uid://c3e3dpkuqsdac"]
+
+[ext_resource type="Script" path="res://big.gd" id="1_17b76"]
+[ext_resource type="Texture2D" uid="uid://dhcehj285juq4" path="res://bigzombie.png" id="2_mx12p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x22gj"]
+atlas = ExtResource("2_mx12p")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11yvx"]
+atlas = ExtResource("2_mx12p")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u5sjk"]
+atlas = ExtResource("2_mx12p")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wkhn5"]
+atlas = ExtResource("2_mx12p")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_74q7j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x22gj")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_11yvx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u5sjk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wkhn5")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wmkbi"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sv2fq"]
+radius = 8.0
+height = 16.0
+
+[node name="big" type="CharacterBody2D" groups=["zombies"]]
+motion_mode = 1
+script = ExtResource("1_17b76")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_74q7j")
+animation = &"walk"
+frame_progress = 0.638308
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(6.84, 6.84)
+shape = SubResource("CircleShape2D_wmkbi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_sv2fq")
+
+[node name="Area2D2" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D2"]
+shape = SubResource("CapsuleShape2D_sv2fq")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_detection_area_body_exited"]
+[connection signal="area_entered" from="Area2D2" to="." method="_on_area_2d_2_area_entered"]
+[connection signal="body_entered" from="Area2D2" to="." method="_on_area_2d_2_body_entered"]

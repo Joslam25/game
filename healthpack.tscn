@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://lrcn705yiudc"]
+
+[ext_resource type="Script" path="res://healthpack.gd" id="1_w5rev"]
+[ext_resource type="Texture2D" uid="uid://bc6ai3hfr1rr0" path="res://Zombie Apocalypse Tileset/Zombie Apocalypse Tileset/Organized separated sprites/Pickable Items and Weapons/Zombie-Tileset---_0340_Capa-341.png" id="2_hjyiu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_huo41"]
+size = Vector2(10, 10)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_w5rev")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_hjyiu")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_huo41")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

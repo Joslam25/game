@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://slv4lowxemnm"
+path="res://.godot/imported/713312__ron88888__pew-sound (1).mp3-df1b73496cd7bca59d9aff101fd1898b.mp3str"
+
+[deps]
+
+source_file="res://713312__ron88888__pew-sound (1).mp3"
+dest_files=["res://.godot/imported/713312__ron88888__pew-sound (1).mp3-df1b73496cd7bca59d9aff101fd1898b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbo37mxb1u4nb"]
+
+[ext_resource type="Texture2D" uid="uid://ev6df852oumh" path="res://youdied.jpg" id="1_gsm2b"]
+
+[node name="Youdied" type="Sprite2D"]
+position = Vector2(575, 325.5)
+scale = Vector2(0.903125, 0.898611)
+texture = ExtResource("1_gsm2b")
