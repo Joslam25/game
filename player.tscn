@@ -162,7 +162,13 @@ autostart = true
 stream = ExtResource("4_offb1")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+rotation = 0.0902357
 scale = Vector2(0.1, 0.1)
+zoom = Vector2(2.5, 2.5)
+limit_left = 0
+limit_top = 0
+limit_right = 1152
+limit_bottom = 570
 
 [connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="body_exited" from="hitbox" to="." method="_on_hitbox_body_exited"]
