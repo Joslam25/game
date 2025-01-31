@@ -11,6 +11,7 @@ script = ExtResource("1_ml53v")
 position = Vector2(2, 0)
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
 one_shot = true
 
 [node name="pew" type="AudioStreamPlayer2D" parent="."]
