@@ -1,6 +1,7 @@
 extends Node2D
 
 var skinny = load("res://skinny.tscn")
+var big = load("res://big.tscn")
 var spawn_area_min = Vector2(0, 0)  # Top-left corner of the map
 var spawn_area_max = Vector2(1000, 1000)  # Bottom-right corner of the map
 var health_pack_scene = preload("res://healthpack.tscn")  # Path to your health pack scene
@@ -9,25 +10,31 @@ var health_pack_scene = preload("res://healthpack.tscn")  # Path to your health 
 func _ready() -> void:
 	spawn_zombie()
 	start_spawning()
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
 func spawn_zombie():
 	var zombie = skinny.instantiate()
+	var big_zombie = big.instantiate()
 	var rand = round(randf_range(1,4))
 	print(rand)
 	if rand == 1:
 		zombie.position = Vector2(25,40)
+		big_zombie.position = Vector2(25,220)
 		print("1")
 	elif rand == 2:
 		zombie.position = Vector2(25,220)
+		big_zombie.position = Vector2(490,40)
 	elif rand == 3:
 		zombie.position = Vector2(490,40)
+		big_zombie.position = Vector2(490,220)
 	elif rand == 4:
 		zombie.position = Vector2(490,220)
+		big_zombie.position = Vector2(25,40)
+		
 	add_child(zombie)
+	add_child(big_zombie)
 	
 	await get_tree().create_timer(2.0).timeout
 	spawn_zombie()

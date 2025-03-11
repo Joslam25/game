@@ -60,6 +60,7 @@ animation = &"walk"
 frame_progress = 0.638308
 
 [node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(4.79616, 4.39352)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 scale = Vector2(6.84, 6.84)

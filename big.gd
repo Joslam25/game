@@ -35,7 +35,9 @@ func _on_detection_area_body_exited(body):
 		playerbody = null
 		player_chase = false
 
-
+var health = 2
 func _on_area_2d_2_area_entered(area: Area2D) -> void:
-	if area.name == "bullet":
-		queue_free()
+	if area.name == "bullet": 
+		if health == 0:
+			queue_free()
+		else: health -= 1

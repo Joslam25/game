@@ -3,6 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://ev6df852oumh" path="res://youdied.jpg" id="1_gsm2b"]
 
 [node name="Youdied" type="Sprite2D"]
-position = Vector2(575, 325.5)
-scale = Vector2(0.903125, 0.898611)
+position = Vector2(969.31, 542.397)
+scale = Vector2(1.5148, 1.50723)
 texture = ExtResource("1_gsm2b")
