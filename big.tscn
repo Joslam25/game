@@ -60,18 +60,19 @@ animation = &"walk"
 frame_progress = 0.638308
 
 [node name="Area2D" type="Area2D" parent="."]
-scale = Vector2(4.79616, 4.39352)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-scale = Vector2(6.84, 6.84)
+scale = Vector2(30.8458, 30.8458)
 shape = SubResource("CircleShape2D_wmkbi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.38896, 1.38896)
 shape = SubResource("CapsuleShape2D_sv2fq")
 
 [node name="Area2D2" type="Area2D" parent="."]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D2"]
+scale = Vector2(1.38555, 1.38555)
 shape = SubResource("CapsuleShape2D_sv2fq")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_detection_area_body_entered"]
